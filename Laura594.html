@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEER – Küchenmanufaktur</title>
+
+    <style>
+        :root {
+            --black: #111;
+            --gray: #666;
+            --green: #2ecc71;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--black);
+            line-height: 1.6;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Logo */
+        .logo img {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 25px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 30px;
+        }
+
+        p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        hr {
+            margin: 40px 0;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Video – Hochformat 9:16 (gleiche Außenbreite) */
+        .video-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 30px auto;
+        }
+        
+        .video-wrapper iframe {
+            width: 420px;        /* Video selbst schmal */
+            aspect-ratio: 9 / 16;
+            border-radius: 16px;
+            border: 0;
+            background: #000;
+        }
+
+
+
+        /* Booking */
+        .booking-text {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 40px 0 20px;
+        }
+        
+        .booking-wrapper {
+            width: 100%;
+            height: 2500px; /* pixelgenau für Outlook Bookings (Desktop) */
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .booking-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+
+        /* Comparison */
+        .compare {
+            text-align: left;
+            width: 100%;
+            margin: 60px auto 0;
+        }
+
+        .compare h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .compare ul {
+            list-style: none;
+        }
+
+        .compare li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .compare li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .footer-headline {
+            margin-top: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        /* Testimonial */
+        .testimonial {
+            margin: 60px auto 40px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        /* Kontaktkarte – ohne Bild */
+        .contact-card {
+            background: #c1b3a0;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px auto 0;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .contact-card a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .contact-subtitle {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        
+        .contact-line {
+            font-size: 15px;
+            margin: 6px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LOGO MIT LINK -->
+    <div class="logo">
+        <a href="https://www.beer.de" target="_blank">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAFACAYAAAAGS0FUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMi1jMDAwIDc5LjFiNjVhNzliNCwgMjAyMi8wNi8xMy0yMjowMTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIzLjUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjdBNzNCRDA2NDg2QzExRURBNjEwODQ2OUFEMDE3N0Q3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjdBNzNCRDA3NDg2QzExRURBNjEwODQ2OUFEMDE3N0Q3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N0E3M0JEMDQ0ODZDMTFFREE2MTA4NDY5QUQwMTc3RDciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6N0E3M0JEMDU0ODZDMTFFREE2MTA4NDY5QUQwMTc3RDciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7I2K1pAAAlpklEQVR42uxd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" alt="BEER Küchenmanufaktur Logo">
+        </a>
+    </div>
+
+    <h1>Mehr als Küche</h1>
+    <h2>Individuelle Küchenplanung mit 10%<br>mehr Stauraum – Garantie.</h2>
+
+    <p>
+        Laura hat sich vor kurzem die Traumküche von uns planen lassen
+        und war begeistert, wie professionell und individuell alles umgesetzt wurde.
+    </p>
+
+    <p>
+        <strong>Erleben Sie uns!</strong><br>
+        Ihre private Entdeckungsreise durch Design, Materialien und Möglichkeiten –
+        zu einem top Preis-Leistungsverhältnis.
+    </p>
+
+    <hr>
+
+    <!-- VIDEO (ONEDRIVE – 9:16) -->
+	<div class="video-wrapper">
+    <iframe
+	    src="https://www.youtube-nocookie.com/embed/mLZMioO9zbI?rel=0&modestbranding=1&playsinline=1"
+	    frameborder="0"
+	    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+	    allowfullscreen>
+	</iframe>
+
+</div>
+
+    
+    <!-- VERGLEICH -->
+    <div class="compare">
+        <h3>Im Vergleich zu Fertigküchen:</h3>
+        <ul>
+            <li>Ihre Traumküche wird in sorgfältiger Handarbeit regional vor Ort in Bayern gefertigt</li>
+            <li>Küchenbudget, Ergonomie, Küchenstil – wir sind die Profis an Ihrer Seite: seit über 45 Jahren</li>
+            <li>Individuelles Angebot, unwiderstehlich, risikofrei, klar und wertig</li>
+            <li>
+                Garantie: 10% mehr Stauraum oder wir pflanzen 10 Bäume in Deutschland
+                in Ihrem Namen – mit Zertifikat
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer-headline">
+        Küchenplanung vor Ort,<br>mit mehr Möglichkeiten.
+    </div>
+
+    <!-- BOOKING TEXT -->
+    <div class="booking-text">
+        Buchen Sie hier Ihren Planungstermin mit dem Code <strong>Laura594</strong>
+    </div>
+
+    <!-- OUTLOOK BOOKING IFRAME -->
+    <div class="booking-wrapper">
+        <iframe 
+            src="https://outlook.office.com/book/BEERGmbH@beer.de/?ismsaljsauthenabled"
+            scrolling="no"
+            title="Terminbuchung">
+        </iframe>
+    </div>
+    
+    <!-- TESTIMONIAL -->
+    <div class="testimonial">
+        <p>
+            <em>
+                Du spürst den Unterschied von der Planung – alles passt genau zu Deinem Raum –<br>
+                Es fühlt sich gut an.
+            </em>
+        </p>
+        <div class="testimonial-author">Laura Schulz</div>
+    </div>
+    
+    <!-- KONTAKT / SIGNATUR -->
+    <div class="contact-card">
+        <div class="contact-info">
+            <div class="contact-title">BEER</div>
+            <div class="contact-subtitle">Küchen-Manufaktur</div>
+    
+            <div class="contact-line">
+                ✉️ <a href="mailto:info@beer.de">info@beer.de</a>
+            </div>
+            <div class="contact-line">
+                📞 <a href="tel:+498168909910">+49 8168 909910</a>
+            </div>
+            <div class="contact-line">
+                🌐 <a href="https://www.beer.de" target="_blank">www.beer.de</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+</body>
+</html>
